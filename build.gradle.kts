@@ -1,27 +1,27 @@
 plugins {
-    kotlin("jvm") version "1.9.23"
+    id("org.jetbrains.kotlin.jvm")
+    idea
     application
 }
 
 group = "org.example"
-version = "1.0-SNAPSHOT"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
 }
 
+val kotlinVersion: String by properties
+val javaVersion: String by properties
+
 dependencies {
     testImplementation(kotlin("test"))
-    implementation("org.jetbrains.kotlin:kotlin-reflect:1.9.23")
+    implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
 
-}
-
-tasks.test {
-    useJUnitPlatform()
 }
 
 kotlin {
-    jvmToolchain(8)
+    jvmToolchain(Integer.parseInt(javaVersion))
 }
 
 application {

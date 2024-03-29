@@ -1,10 +1,12 @@
 pluginManagement {
+    val kotlinVersion: String by settings
+
+    plugins {
+        id("org.jetbrains.kotlin.jvm") version kotlinVersion
+    }
+
     repositories {
         mavenCentral()
         gradlePluginPortal()
     }
-}
-
-plugins {
-    id("org.gradle.toolchains.foojay-resolver-convention") version "0.5.0"
 }
